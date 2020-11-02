@@ -3,7 +3,7 @@ name: Attend_1
 on:
     workflow_dispatch:
     schedule:
-        - cron: '40 21 * * 1-5'
+        - cron: '50 13 * * 1-5'
     watch:
         types: started
     repository_dispatch:
