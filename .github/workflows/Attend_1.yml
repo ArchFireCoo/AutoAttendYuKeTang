@@ -19,7 +19,7 @@ jobs:
         steps:
             - name: Checkout
               run: |
-                  git clone https://github.com/949867756/AutoAttendYuKeTang ~/src
+                  git clone https://github.com/949867756/AutoAttendYuKeTang ~/AutoAttendYuKeTang
             - uses: actions/checkout@v2
             - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v2
