@@ -11,7 +11,7 @@ pip install -r requirements
 ```
 
 ## Method 2: Github Actions (Recommend)
-**These actions is setting specified for 吉珠 CS junior students. Modify .github/workflows/*.yml to fit your needs.**
+**These actions are setting specified for 吉珠 CS junior students. Modify .github/workflows/*.yml to fit your needs.**
 
 1. Fork [this responsitory](https://github.com/949867756/AutoAttendYuKeTang)
 2. Create 'Server酱' [SCKEY](http://sc.ftqq.com/?c=code)
