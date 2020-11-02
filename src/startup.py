@@ -11,7 +11,7 @@ def timer(n, task):
     while True: 
         count += 1
         if (count > times):
-            msg = '没有正在上的课'
+            msg = 'NotFoundClass'
             print('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg)
             request.urlopen('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg)
             print(msg)
