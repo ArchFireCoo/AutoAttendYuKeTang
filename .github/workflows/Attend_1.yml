@@ -31,7 +31,7 @@ jobs:
                   if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
             - name: '运行自动签到'
               run: |
-                  python ~/src/startup.py
+                  python ./src/startup.py
               env:
                   USER_INFO: ${{ secrets.USER_INFO }}
                   PUSH_KEY: ${{ secrets.PUSH_KEY }}
