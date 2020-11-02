@@ -4,7 +4,7 @@ import time
 from login import Login
 from config import USERNAME, PASSWORD, PUSH_KEY
 
-times = 1
+times = 2
 
 def timer(n, task):
     count = 0
@@ -29,4 +29,4 @@ def timer(n, task):
 task = Login(username=USERNAME, password=PASSWORD)
 task.setBrowser()
 task.login()
-# timer(15 * 60, task)
+timer(2 * 60, task)
