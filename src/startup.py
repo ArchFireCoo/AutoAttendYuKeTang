@@ -1,27 +1,38 @@
+from urllib import request, parse
 from datetime import datetime
 import time
 from login import Login
+from config import USERNAME, PASSWORD, PUSH_KEY
+
+times = 8
 
 def timer(n, task):
     count = 0
     while True: 
         count += 1
-        if (count > 5):
-            print('Not found online class')
+        if (count > times):
+            msg = 'NotFoundOnlineClass'
+            print('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg)
+            request.urlopen('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg)
+            print(msg)
             break
-        print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
         result = task.enterOnlineClass()
         if (result):
-            print('Attend class success')
+            msg = 'AttendSuccess'
+            request.urlopen('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg)
+            print(msg)
             break
+
+        print('The' + count + 'times not success' + '格林威治时间:' + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         time.sleep(n)
 
 
-username = ''
-password = ''
+task = Login(username=USERNAME, password=PASSWORD)
 
-task = Login(username=username, password=password)
+print('init browser')
 task.setBrowser()
 task.login()
-timer(15 * 60, task)
-# timer(5, task)
+print('finish init browser')
+
+timer(10 * 60, task)
