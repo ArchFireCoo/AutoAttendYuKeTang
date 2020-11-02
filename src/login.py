@@ -18,7 +18,7 @@ class Login:
         options = Options()
         options.add_argument('--no-sandbox')
         options.add_argument('disable-infobars')
-        CHROME_DRIVER = os.getcwd() + '/src/chromedriver'
+        CHROME_DRIVER = '/src/chromedriver'
         self.browser = webdriver.Chrome(executable_path=CHROME_DRIVER, options=options)
 
     def login(self):
