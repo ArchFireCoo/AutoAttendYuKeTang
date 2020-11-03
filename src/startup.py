@@ -24,7 +24,7 @@ def timer(n, task):
             print(msg)
             break
 
-        print('The' + count + 'times not success' + '格林威治时间:' + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        print('The ' + str(count) + ' times not success' + '格林威治时间:' + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         time.sleep(n)
 
 
