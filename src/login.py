@@ -36,11 +36,15 @@ class Login:
     def enterOnlineClass(self):
         time.sleep(5)
         try:
+            self.browser.refresh()
+            time.sleep(5)
             self.browser.find_element_by_css_selector('.onlesson').click()
             time.sleep(2)
             self.browser.find_element_by_css_selector('.lessonlist').click()
             time.sleep(5)
+            self.browser.switch_to.window(self.browser.window_handles[1])
+            tmp = self.browser.title
             self.browser.close()
-            return True
+            return [True, tmp]
         except NoSuchElementException:
-            return False
+            return [False]
