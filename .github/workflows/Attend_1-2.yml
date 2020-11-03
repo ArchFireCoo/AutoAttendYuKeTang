@@ -4,8 +4,6 @@ on:
     workflow_dispatch:
     schedule:
         - cron: '0 0,2 * * 1,2,5'
-    watch:
-        types: started
     repository_dispatch:
         types: joy
 
