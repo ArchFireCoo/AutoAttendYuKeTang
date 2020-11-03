@@ -26,7 +26,6 @@ def timer(n, task):
             request.urlopen(url)
             print(msg)
             break
-
         print('The ' + str(count) + ' times did not success')
         time.sleep(n)
 
