@@ -24,7 +24,7 @@ def timer(n, task):
             msg = 'AttendSuccess'
             url = quote('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg + '&desp=' + result[1], safe = string.printable)
             request.urlopen(url)
-            print(msg)
+            print(msg + ' CourseName: ' + result[1])
             break
         print('The ' + str(count) + ' times did not success')
         time.sleep(n)

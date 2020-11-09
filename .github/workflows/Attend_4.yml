@@ -3,7 +3,7 @@ name: Attend_4
 on:
     workflow_dispatch:
     schedule:
-        - cron: '40 7 * * 1,2,5'
+        - cron: '0 8 * * 1,2,5'
     repository_dispatch:
         types: joy
 
@@ -17,7 +17,7 @@ jobs:
         steps:
             - name: Checkout
               run: |
-                  git clone https://github.com/949867756/AutoAttendYuKeTang ~/AutoAttendYuKeTang
+                  git clone https://github.com/VidocqH/AutoAttendYuKeTang ~/AutoAttendYuKeTang
             - uses: actions/checkout@v2
             - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v2
