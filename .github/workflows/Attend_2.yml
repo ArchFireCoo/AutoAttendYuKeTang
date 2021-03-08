@@ -3,7 +3,7 @@ name: Attend_2
 on:
     workflow_dispatch:
     schedule:
-        - cron: '20 0,2,6 * * 1,2,5'
+        - cron: '20 0,2,6 * * 2'
     repository_dispatch:
         types: joy
 
