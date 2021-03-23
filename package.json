@@ -1,0 +1,15 @@
+{
+  "name": "AutoAttendYuKeTang",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Jasonzj/AutoAttendYuKeTang.git",
+  "author": "Jasonzj <925645402@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "got": "^11.8.2",
+    "jsencrypt": "^3.0.1",
+    "node-rsa": "^1.1.1",
+    "tough-cookie": "^4.0.0"
+  },
+  "devDependencies": {}
+}
