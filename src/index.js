@@ -85,8 +85,8 @@ const execCheckIn = async () => {
 const startUp = async () => {
   const { USER_INFO } = process.env
   const [USERNAME, PASSWORD] = USER_INFO.split('|')
-  if (USERNAME && PASSWORD) {
-    console.log("Failed: USER_INFO not provided.")
+  if (!(USERNAME && PASSWORD)) {
+    console.log('Failed: USER_INFO not provided.')
     process.exit(0)
   }
   await login(USERNAME, PASSWORD)
