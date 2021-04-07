@@ -33,7 +33,12 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Run script
+      - name: Run script 1
+        run: node src/index.js
+        env:
+          USER_INFO: ${{ secrets.USER_INFO }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+      - name: Run script 2
         run: node src/index.js
         env:
           USER_INFO: ${{ secrets.USER_INFO }}
