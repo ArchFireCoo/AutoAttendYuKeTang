@@ -19,7 +19,8 @@ yarn
 node ./src/index.js
 ```
 ## Method 3: Github Actions (Recommend)
-**These actions are setting specified for 吉珠 CS junior students. Modify .github/workflows/*.yml to fit your needs.**
+**These actions are setting specified for 吉珠 CS junior students. Modify `.github/workflows/*.yml` to fit your needs.**
+**Careful: Github Action crontab is defined in GMT timezone, while China is in GMT+8.**
 
 1. Fork [this responsitory](https://github.com/ArchFireCoo/AutoAttendYuKeTang)
 2. Create 'Server酱' [SCKEY](http://sc.ftqq.com/?c=code)
