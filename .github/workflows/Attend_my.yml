@@ -1,4 +1,4 @@
-name: Attend_1_3-4
+name: Attend_my
 
 on:
   workflow_dispatch:
