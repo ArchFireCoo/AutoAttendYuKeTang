@@ -90,6 +90,7 @@ const startUp = async () => {
     process.exit(0)
   }
   await login(USERNAME, PASSWORD)
+  sendNotify('YukeTang: Start', 'Start!')
   execCheckIn()
 }
 
