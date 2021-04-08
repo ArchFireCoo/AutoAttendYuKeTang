@@ -59,12 +59,13 @@ const attendLesson = async ({
   const { success } = await customGot(api.attendLesson, {
     searchParams: { lesson_id },
   }).json()
-
+/*
   if (success) {
     sendNotify('YuKeTang: success', name)
   } else {
     sendNotify('YuKeTang: fail', name)
   }
+  */
 }
 
 const execCheckIn = async () => {
@@ -75,7 +76,7 @@ const execCheckIn = async () => {
     setTimeout(execCheckIn, 1000 * 60)
     return
   } else if (count === times) {
-    sendNotify('YuKeTang: fail', 'Not Found Online Class')
+    //sendNotify('YuKeTang: fail', 'Not Found Online Class')
     return
   }
 
