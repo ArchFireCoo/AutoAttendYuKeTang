@@ -72,11 +72,8 @@ const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`)
   const lessonInfo = await getOnLessonInfo()
 
-  if (!lessonInfo && count < times) {
-    setTimeout(execCheckIn, 1000 * 20)
-    return
-  } else if (count === times) {
-    //sendNotify('YuKeTang: fail', 'Not Found Online Class')
+  if (!lessonInfo) {
+    setTimeout(execCheckIn, 1000 * (15 + Math.floor(Math.random() * 10)))
     return
   }
 
