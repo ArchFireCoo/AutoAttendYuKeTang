@@ -71,9 +71,8 @@ const attendLesson = async ({
 const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`)
   const lessonInfo = await getOnLessonInfo()
-
+  setTimeout(execCheckIn, 1000 * (15 + Math.floor(Math.random() * 10)))
   if (!lessonInfo) {
-    setTimeout(execCheckIn, 1000 * (15 + Math.floor(Math.random() * 10)))
     return
   }
 
