@@ -59,13 +59,11 @@ const attendLesson = async ({
   const { success } = await customGot(api.attendLesson, {
     searchParams: { lesson_id },
   }).json()
-/*
+
   if (success) {
-    sendNotify('YuKeTang: success', name)
-  } else {
-    sendNotify('YuKeTang: fail', name)
+    console.log('Success: ', name);
+    //sendNotify('YuKeTang: success', name)
   }
-  */
 }
 
 const execCheckIn = async () => {
