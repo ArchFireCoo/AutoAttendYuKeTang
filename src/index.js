@@ -84,7 +84,7 @@ const execCheckIn = async () => {
   if (!lessonInfo) {
     return
   }
-  if(!successLessons.has(lessonInfo.lesson_id) {
+  if(!successLessons.has(lessonInfo.lesson_id)) {
     attendLesson(lessonInfo)
   }
 }
