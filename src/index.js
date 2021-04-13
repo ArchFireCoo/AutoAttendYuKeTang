@@ -60,7 +60,7 @@ const attendLesson = async ({
   const data = await customGot(api.attendLesson, {
     searchParams: { lesson_id },
   }).json()
-  const { sucess } = data;
+  const { success } = data;
   if (success) {
     console.log('Success: ', name);
     successLessons.add(lesson_id);
