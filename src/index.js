@@ -63,8 +63,10 @@ const attendLesson = async ({
   const { success } = data;
   if (success) {
     console.log('Success: ', name);
-    successLessons.add(lesson_id);
-    sendNotify('YuKeTang: success', name)
+    if(!successLessons.has(lessonInfo.lesson_id)) {
+      sendNotify('YuKeTang: success', name)
+      successLessons.add(lesson_id);
+    }
   } else {
     console.log('Error: ', data);
     sendNotify('YukeTang: Error', JSON.stringify(data, null, 2))
@@ -74,7 +76,7 @@ const attendLesson = async ({
 const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`)
   const lessonInfo = await getOnLessonInfo()
-  if(count == times) {
+  if(count >= times) {
     sendNotify('YukeTang: End', 'End!')
     return
   }
@@ -84,9 +86,7 @@ const execCheckIn = async () => {
   if (!lessonInfo) {
     return
   }
-  if(!successLessons.has(lessonInfo.lesson_id)) {
-    attendLesson(lessonInfo)
-  }
+  attendLesson(lessonInfo)
 }
 
 const startUp = async () => {
