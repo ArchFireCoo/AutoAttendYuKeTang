@@ -10,7 +10,7 @@ const resolve = function (...args) {
 }
 
 let count = 0
-const times = 720
+const times = 900
 
 const cookieJar = new CookieJar()
 
@@ -69,7 +69,9 @@ const attendLesson = async ({
 const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`)
   const lessonInfo = await getOnLessonInfo()
-  setTimeout(execCheckIn, 1000 * (15 + Math.floor(Math.random() * 10)))
+  if(count < times) {
+    setTimeout(execCheckIn, 1000 * (15 + Math.floor(Math.random() * 10)))
+  }
   if (!lessonInfo) {
     return
   }
