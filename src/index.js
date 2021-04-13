@@ -10,7 +10,7 @@ const resolve = function (...args) {
 }
 
 let count = 0
-const times = 900
+const times = 300
 
 const cookieJar = new CookieJar()
 
@@ -18,8 +18,9 @@ const customGot = got.extend({
   cookieJar,
 })
 
-const publicKey = fs.readFileSync(resolve('public.pem'), 'utf8')
+const successLessons = new Set();
 
+const publicKey = fs.readFileSync(resolve('public.pem'), 'utf8')
 const key = new NodeRSA(publicKey, 'pkcs8-public', {
   encryptionScheme: 'pkcs1',
 })
@@ -56,27 +57,36 @@ const attendLesson = async ({
   },
 }) => {
   // await customGot(`https://changjiang.yuketang.cn/lesson/fullscreen/${lesson_id}?source=5`)
-  const { success } = await customGot(api.attendLesson, {
+  const data = await customGot(api.attendLesson, {
     searchParams: { lesson_id },
   }).json()
-
+  const { sucess } = data;
   if (success) {
     console.log('Success: ', name);
-    //sendNotify('YuKeTang: success', name)
+    successLessons.add(lesson_id);
+    sendNotify('YuKeTang: success', name)
+  } else {
+    console.log('Error: ', data);
+    sendNotify('YukeTang: Error', JSON.stringify(data, null, 2))
   }
 }
 
 const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`)
   const lessonInfo = await getOnLessonInfo()
+  if(count == times) {
+    sendNotify('YukeTang: End', 'End!')
+    return
+  }
   if(count < times) {
-    setTimeout(execCheckIn, 1000 * (15 + Math.floor(Math.random() * 10)))
+    setTimeout(execCheckIn, 1000 * 60)
   }
   if (!lessonInfo) {
     return
   }
-
-  attendLesson(lessonInfo)
+  if(!successLessons.has(lessonInfo.lesson_id) {
+    attendLesson(lessonInfo)
+  }
 }
 
 const startUp = async () => {
