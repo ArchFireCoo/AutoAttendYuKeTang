@@ -63,7 +63,7 @@ const attendLesson = async ({
   const { success } = data;
   if (success) {
     console.log('Success: ', name);
-    if(!successLessons.has(lessonInfo.lesson_id)) {
+    if(!successLessons.has(lesson_id)) {
       sendNotify('YuKeTang: success', name)
       successLessons.add(lesson_id);
     }
