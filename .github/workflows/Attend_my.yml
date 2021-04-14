@@ -8,7 +8,7 @@ on:
     types: joy
 
 jobs:
-  build:
+  Run1:
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -33,14 +33,40 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Run script 1
+      - name: Run
         run: node src/index.js
         env:
           USER_INFO: ${{ secrets.USER_INFO }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
-      - name: Run script 2
+  Run2:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: arrayJY/AutoAttendYuKeTang
+          ref: master
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run
         run: node src/index.js
         env:
           USER_INFO: ${{ secrets.USER_INFO }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
+
 
