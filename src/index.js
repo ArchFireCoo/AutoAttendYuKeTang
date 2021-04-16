@@ -81,7 +81,7 @@ const execCheckIn = async () => {
     return
   }
   if(count < times) {
-    setTimeout(execCheckIn, 1000 * 60)
+    setTimeout(execCheckIn, 1000 * 20)
   }
   if (!lessonInfo) {
     return
