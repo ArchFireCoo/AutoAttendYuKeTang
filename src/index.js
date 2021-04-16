@@ -77,7 +77,7 @@ const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`)
   const lessonInfo = await getOnLessonInfo()
   if(count >= times) {
-    sendNotify('YukeTang: End', 'End!')
+    sendNotify('YukeTang: End', new Date().toLocaleString('zh-CN'))
     return
   }
   if(count < times) {
@@ -97,7 +97,7 @@ const startUp = async () => {
     process.exit(0)
   }
   await login(USERNAME, PASSWORD)
-  sendNotify('YukeTang: Start', 'Start!')
+  sendNotify('YukeTang: Start', new Date().toLocaleString('zh-CN'))
   execCheckIn()
 }
 
