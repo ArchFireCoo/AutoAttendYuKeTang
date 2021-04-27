@@ -10,7 +10,7 @@ const resolve = function (...args) {
 };
 
 let count = 0;
-const times = 900;
+const times = 960;
 
 const cookieJar = new CookieJar();
 
