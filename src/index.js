@@ -76,8 +76,9 @@ const attendLesson = async ({
 
 const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`);
+  let lessonInfo = undefined;
   try{
-    const lessonInfo = await getOnLessonInfo();
+    lessonInfo = await getOnLessonInfo();
   } catch(err) {
     console.log('GetOnInfo Failed:', err)
   }
