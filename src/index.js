@@ -77,10 +77,10 @@ const attendLesson = async ({
 const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`);
   let lessonInfo = undefined;
-  try{
+  try {
     lessonInfo = await getOnLessonInfo();
-  } catch(err) {
-    console.log('GetOnInfo Failed:', err)
+  } catch (err) {
+    console.log("GetOnInfo Failed:", err);
   }
   if (count >= times) {
     sendNotify("YukeTang: End", new Date().toLocaleString("zh-CN"));
@@ -92,10 +92,10 @@ const execCheckIn = async () => {
   if (!lessonInfo) {
     return;
   }
-  try{
+  try {
     lessonInfo.forEach((lesson) => attendLesson(lesson));
-  }catch(err) {
-    console.log('Attend Failed:', err)
+  } catch (err) {
+    console.log("Attend Failed:", err);
   }
 };
 

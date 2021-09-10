@@ -4,7 +4,7 @@ const SCKEY = process.env.PUSH_KEY
 
 const sendNotify = (title, message) => {
   if (SCKEY) {
-    got(`https://sc.ftqq.com/${SCKEY}.sendNotify`, {
+    got(`https://sctapi.ftqq.com/${SCKEY}.send`, {
       searchParams: {
         text: title,
         desp: message,
@@ -12,9 +12,9 @@ const sendNotify = (title, message) => {
       responseType: 'json',
     })
       .then(({ body }) => {
-        if (body.errno === 0) {
+        if (body.code === 0) {
           console.log('server酱发送通知消息成功\n')
-        } else if (body.errno === 1024) {
+        } else if (body.code === 1024) {
           console.log(`server酱发送通知消息异常: ${body.errmsg}\n`)
         } else {
           console.log(`server酱发送通知消息异常\n${JSON.stringify(body)}`)
