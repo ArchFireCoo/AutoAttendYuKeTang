@@ -19,12 +19,12 @@ yarn
 node ./src/index.js
 ```
 ## Method 3: Github Actions (Recommend)
-**These actions are setting specified for 吉珠 CS junior students. Modify `.github/workflows/*.yml` to fit your needs.**
+**These actions are setting specified for almost all college students. Modify `.github/workflows/*.yml` to fit your needs.**
 **Careful: Github Action crontab is defined in GMT timezone, while China is in GMT+8.**
 
 1. Fork [this responsitory](https://github.com/ArchFireCoo/AutoAttendYuKeTang)
-2. Create 'Server酱' [SCKEY](http://sc.ftqq.com/?c=code)
+2. Create 'Server酱' [SENDKEY](https://sct.ftqq.com/sendkey)
 3. In project page, click 'Settings' -> click 'Secret'
 4. In 'Secret' page, create two secrets named 'USER_INFO' and 'PUSH_KEY':
    - 'USER_INFO': yourYuKeTangaccount|yourYuKeTangpassword
-   - 'PUSH_KEY': SCKEY
+   - 'PUSH_KEY': SENDKEY
