@@ -52,8 +52,8 @@ const getOnLessonInfo = async () => {
   const {
     data: {onLessonClassrooms}
   } = await customGot(api.attendLessonV3).json();
-  const on_lessons = on_lessons_v2.concat(onLessonClassrooms)
-  return on_lessons.length > 0 ? on_lessons : false;
+  const on_lessons = on_lessons_v2?.concat(onLessonClassrooms ?? [])
+  return on_lessons && on_lessons.length > 0 ? on_lessons : false;
 };
 
 const attendLesson = async ({
