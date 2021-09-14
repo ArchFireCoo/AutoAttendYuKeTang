@@ -81,15 +81,15 @@ const attendLesson = async ({
 
 const execCheckIn = async () => {
   console.log(`Number of executions: ${++count}`);
+  if (count >= times) {
+    sendNotify("YukeTang: End", new Date().toLocaleString("zh-CN"));
+    return;
+  }
   let lessonInfo = undefined;
   try {
     lessonInfo = await getOnLessonInfo();
   } catch (err) {
     console.log("GetOnInfo Failed:", err);
-  }
-  if (count >= times) {
-    sendNotify("YukeTang: End", new Date().toLocaleString("zh-CN"));
-    return;
   }
   if (count < times) {
     setTimeout(execCheckIn, 1000 * 20);
