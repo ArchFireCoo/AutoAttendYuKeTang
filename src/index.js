@@ -30,7 +30,8 @@ const api = {
   getOnLessonData:
     "https://changjiang.yuketang.cn/v/course_meta/on_lesson_courses",
   attendLesson: "https://changjiang.yuketang.cn/v/lesson/lesson_info_v2",
-  attendLessonV3: "https://changjiang.yuketang.cn/api/v3/classroom/on-lesson"
+  getOnLessonDataV3:
+    "https://changjiang.yuketang.cn/api/v3/classroom/on-lesson",
 };
 
 const login = async (username, password) => {
@@ -47,12 +48,12 @@ const login = async (username, password) => {
 
 const getOnLessonInfo = async () => {
   const {
-    data: { on_lessons_v2 },
+    data: { on_lessons: on_lessons_v2 },
   } = await customGot(api.getOnLessonData).json();
   const {
-    data: {onLessonClassrooms}
-  } = await customGot(api.attendLessonV3).json();
-  const on_lessons = on_lessons_v2?.concat(onLessonClassrooms ?? [])
+    data: { onLessonClassrooms },
+  } = await customGot(api.getOnLessonDataV3).json();
+  const on_lessons = on_lessons_v2?.concat(onLessonClassrooms ?? []);
   return on_lessons && on_lessons.length > 0 ? on_lessons : false;
 };
 
