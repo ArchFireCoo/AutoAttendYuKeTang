@@ -89,21 +89,21 @@ const execCheckIn = async () => {
     sendNotify("YukeTang: End", new Date().toLocaleString("zh-CN"));
     return;
   }
+  if (count <= 1) {
+    startTime = moment();
+  } else {
+    const nowTime = moment();
+    if (nowTime.diff(startTime, "minute") > 1) {
+      sendNotify("YukeTang: End", nowTime.format("YYYY-MM-DD hh:mm:ss"));
+      return;
+    } 
+    setTimeout(execCheckIn, 1000 * 20);
+  }
   let lessonInfo = undefined;
   try {
     lessonInfo = await getOnLessonInfo();
   } catch (err) {
     console.log("GetOnInfo Failed:", err);
-  }
-  if (count <= 1) {
-    startTime = moment();
-  } else {
-    const nowTime = moment();
-    if (nowTime.diff(startTime, "minute") >= 1) {
-      sendNotify("YukeTang: End", nowTime.format("YYYY-MM-DD hh:mm:ss"));
-      return;
-    } 
-    setTimeout(execCheckIn, 1000 * 20);
   }
   /*
   if (count >= times) {
