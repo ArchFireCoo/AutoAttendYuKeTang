@@ -93,12 +93,12 @@ const execCheckIn = async () => {
     startTime = moment();
   } else {
     const nowTime = moment();
-    if (nowTime.diff(startTime, "minute") > 1) {
+    if (nowTime.diff(startTime, "minute") > 320) {
       sendNotify("YukeTang: End", nowTime.format("YYYY-MM-DD hh:mm:ss"));
       return;
     } 
-    setTimeout(execCheckIn, 1000 * 20);
   }
+  setTimeout(execCheckIn, 1000 * 20);
   let lessonInfo = undefined;
   try {
     lessonInfo = await getOnLessonInfo();
