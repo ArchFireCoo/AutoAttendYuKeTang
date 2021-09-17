@@ -15,7 +15,7 @@ const times = 960;
 
 const cookieJar = new CookieJar();
 
-const startTime = undefined;
+let startTime = undefined;
 
 const customGot = got.extend({
   cookieJar,
