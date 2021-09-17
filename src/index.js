@@ -4,6 +4,7 @@ const fs = require("fs");
 const got = require("got");
 const { CookieJar } = require("tough-cookie");
 const sendNotify = require("./sendNotify");
+const moment = require("moment");
 
 const resolve = function (...args) {
   return path.resolve(__dirname, ...args);
@@ -13,6 +14,8 @@ let count = 0;
 const times = 960;
 
 const cookieJar = new CookieJar();
+
+const startTime = undefined;
 
 const customGot = got.extend({
   cookieJar,
@@ -53,14 +56,14 @@ const getOnLessonInfo = async () => {
 
 const attendLesson = async ({
   lesson_id,
-  classroom: {
-    course: { name },
-  },
+  name,
+  classroom,
 }) => {
   // await customGot(`https://changjiang.yuketang.cn/lesson/fullscreen/${lesson_id}?source=5`)
   const data = await customGot(api.attendLesson, {
     searchParams: { lesson_id },
   }).json();
+  name = classroom?.course?.name ?? name
   const { success } = data;
   if (success) {
     console.log("Success: ", name);
@@ -82,13 +85,22 @@ const execCheckIn = async () => {
   } catch (err) {
     console.log("GetOnInfo Failed:", err);
   }
+  if (count <= 1) {
+    startTime = moment();
+  } else {
+    const nowTime = moment();
+    if (nowTime.diff(startTime, "minute") >= 1) {
+      sendNotify("YukeTang: End", nowTime.format("YYYY-MM-DD hh:mm:ss"));
+      return;
+    } 
+    setTimeout(execCheckIn, 1000 * 20);
+  }
+  /*
   if (count >= times) {
     sendNotify("YukeTang: End", new Date().toLocaleString("zh-CN"));
     return;
   }
-  if (count < times) {
-    setTimeout(execCheckIn, 1000 * 20);
-  }
+  */
   if (!lessonInfo) {
     return;
   }

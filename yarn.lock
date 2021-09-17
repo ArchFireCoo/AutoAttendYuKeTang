@@ -168,6 +168,11 @@
   "resolved" "https://registry.npm.taobao.org/mimic-response/download/mimic-response-3.1.0.tgz"
   "version" "3.1.0"
 
+"moment@^2.29.1":
+  "integrity" "sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M="
+  "resolved" "https://registry.npm.taobao.org/moment/download/moment-2.29.1.tgz"
+  "version" "2.29.1"
+
 "node-rsa@^1.1.1":
   "integrity" "sha1-79mtOCCXeC9QYVM5hJb3nkRkQ00= sha512-Jd4cvbJMryN21r5HgxQOpMEqv+ooke/korixNNK3mGqfGJmy0M77WDDzo/05969+OkMy3XW1UuZsSmW9KQm7Fw=="
   "resolved" "https://registry.npm.taobao.org/node-rsa/download/node-rsa-1.1.1.tgz"
