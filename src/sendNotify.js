@@ -4,8 +4,9 @@ const SCKEY = process.env.PUSH_KEY
 const BARKID = process.env.BARK_ID
 
 const sendNotify = (title, message) => {
+  console.log(encodeURIComponent(`https://api.day.app/${BARKID}/${title}/${message}?group=长江雨课堂`));
   if (BARKID) {
-    got(encodeURI(`https://api.day.app/${BARKID}/${title}/${message}`), {
+    got(encodeURIComponent(`https://api.day.app/${BARKID}/${title}/${message}?group=长江雨课堂`), {
           responseType: 'json'  
     }).then( ({ body }) => {
       if (body.code === 200) {
@@ -15,6 +16,7 @@ const sendNotify = (title, message) => {
       }
     }).catch( (err) => {
       console.log("Bark app 发送通知调用API失败！！\n");
+      console.log(err);
     })
   } else {
     console.log( "您未提供BARKID，无法使用BARK接收推送通知\n")
