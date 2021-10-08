@@ -5,7 +5,7 @@ const BARKID = process.env.BARK_ID
 
 const sendNotify = (title, message) => {
   if (BARKID) {
-    got(`https://api.day.app/${BARKID}/${escape(title)}/${escape(message)}`, {
+    got(encodeURI(`https://api.day.app/${BARKID}/${title}/${message}`), {
           responseType: 'json'  
     }).then( ({ body }) => {
       if (body.code === 200) {
