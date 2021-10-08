@@ -25,7 +25,7 @@ node ./src/index.js
 1. Fork [this responsitory](https://github.com/ArchFireCoo/AutoAttendYuKeTang)
 2. Create 'Server酱' [SENDKEY](https://sct.ftqq.com/sendkey)
 3. In project page, click 'Settings' -> click 'Secret'
-4. In 'Secret' page, create two secrets named 'USER_INFO' and 'PUSH_KEY':
+4. In 'Secret' page, create two secrets named 'USER_INFO' and 'PUSH_KEY' and 'BARK_ID':
    - 'USER_INFO': yourYuKeTangaccount|yourYuKeTangpassword
    - 'PUSH_KEY': SENDKEY
    - 'BARK_ID': BARKID
