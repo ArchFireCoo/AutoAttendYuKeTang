@@ -4,9 +4,9 @@ const SCKEY = process.env.PUSH_KEY
 const BARKID = process.env.BARK_ID
 
 const sendNotify = (title, message) => {
-  console.log(`https://api.day.app/${BARKID}/${encodeURIComponent(title)}/${encodeURIComponent(message)}?group=长江雨课堂`);
+  console.log(`https://api.day.app/${BARKID}/${encodeURI(title)}/${encodeURI(message)}?group=长江雨课堂`);
   if (BARKID) {
-    got(`https://api.day.app/${BARKID}/${encodeURIComponent(title)}/${encodeURIComponent(message)}?group=长江雨课堂`, {
+    got(`https://api.day.app/${BARKID}/${encodeURI(title)}/${encodeURI(message)}?group=长江雨课堂`, {
           responseType: 'json'  
     }).then( ({ body }) => {
       if (body.code === 200) {
