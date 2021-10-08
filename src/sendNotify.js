@@ -4,6 +4,7 @@ const SCKEY = process.env.PUSH_KEY
 const BARKID = process.env.BARK_ID
 
 const sendNotify = (title, message) => {
+  console.log(BARKID);
   if (BARKID) {
     got(`https://api.day.app/${BARKID}/${title}/${message}`, {
           responseType: 'json'  
