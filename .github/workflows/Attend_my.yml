@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: arrayJY/AutoAttendYuKeTang
+          repository: HibariX/AutoAttendYuKeTang
           ref: master
 
       - name: Use Node.js ${{ matrix.node-version }}
@@ -46,7 +46,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: arrayJY/AutoAttendYuKeTang
+          repository: HibariX/AutoAttendYuKeTang
           ref: master
 
       - name: Use Node.js ${{ matrix.node-version }}
@@ -78,7 +78,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: arrayJY/AutoAttendYuKeTang
+          repository: HibariX/AutoAttendYuKeTang
           ref: master
 
       - name: Use Node.js ${{ matrix.node-version }}
