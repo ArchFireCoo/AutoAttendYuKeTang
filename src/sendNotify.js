@@ -19,9 +19,12 @@ const sendNotify = (title, message) => {
     }).catch( (err) => {
       console.log("Bark app 发送通知调用API失败！！\n");
       console.log(err);
+      console.log("SCKEY:" + SCKEY);
+      console.log("BARKID:" + BARKID);
+      console.log("BARKReqURL:" + `https://api.day.app/${BARKID}/${title}/${message}`);
     })
-
-
+  } else {
+    console.log( "您未提供BARKID，无法使用BARK接收推送通知\n")
   }
 
   if (SCKEY) {
