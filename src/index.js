@@ -11,7 +11,6 @@ const resolve = function (...args) {
 };
 
 let count = 0;
-const times = 960;
 
 const cookieJar = new CookieJar();
 
@@ -19,6 +18,7 @@ let startTime = undefined;
 
 const customGot = got.extend({
   cookieJar,
+  timeout: 10000
 });
 
 const successLessons = new Set();
