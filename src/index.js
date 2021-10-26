@@ -94,7 +94,7 @@ const attendLessonV3 = async ({ lessonId, classroomId, courseName }) => {
 
 const attendLesson = async ({ lesson_id, classroom }) => {
   const data = await customGot(api.attendLesson, {
-    searchParams: { lesson_id },
+    searchParams: { lesson_id, source: 1 },
   }).json();
   const name = classroom?.course?.name;
   const { success } = data;
