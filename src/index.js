@@ -18,6 +18,7 @@ let startTime = undefined;
 
 const customGot = got.extend({
   cookieJar,
+  timeout: 10000,
 });
 
 const successLessons = new Set();
@@ -32,7 +33,7 @@ const api = {
   getOnLessonData:
     "https://changjiang.yuketang.cn/v/course_meta/on_lesson_courses",
   attendLesson: "https://changjiang.yuketang.cn/v/lesson/lesson_info_v2",
-  attendLessonV3: "https://changjiang.yuketang.cn/api/v3/classroom/basic-info",
+  attendLessonV3: "https://changjiang.yuketang.cn/api/v3/lesson/checkin",
   getOnLessonDataV3:
     "https://changjiang.yuketang.cn/api/v3/classroom/on-lesson",
 };
@@ -66,15 +67,19 @@ const getOnLessonInfoV3 = async () => {
     : false;
 };
 
-const attendLessonV3Request = (classroom_id) =>
+const attendLessonV3Request = (lessonId) =>
   customGot(api.attendLessonV3, {
-    searchParams: { classroom_id },
+    method: "POST",
+    json: {
+      source: 1,
+      lessonId,
+    },
   }).json();
 
-const attendLessonV3 = async ({ classroomId, courseName }) => {
-  const data = await attendLessonV3Request(classroomId);
-  const {code} = data
-  const success = code === 0
+const attendLessonV3 = async ({ lessonId, classroomId, courseName }) => {
+  const data = await attendLessonV3Request(lessonId);
+  const { code } = data;
+  const success = code === 0;
   if (success) {
     console.log("Success: ", courseName);
     if (!successLessons.has(classroomId)) {
@@ -89,7 +94,7 @@ const attendLessonV3 = async ({ classroomId, courseName }) => {
 
 const attendLesson = async ({ lesson_id, classroom }) => {
   const data = await customGot(api.attendLesson, {
-    searchParams: { lesson_id },
+    searchParams: { lesson_id, source: 1 },
   }).json();
   const name = classroom?.course?.name;
   const { success } = data;
