@@ -12,10 +12,10 @@ const sendNotify = (title, message) => {
       responseType: 'json',
     })
       .then(({ body }) => {
-        if (body.data.errno === 0) {
+        if (body.code === 0) {
           console.log('server酱发送通知消息成功\n')
-        } else if (body.data.errno === 1024) {
-          console.log(`server酱发送通知消息异常: ${body.data.error}\n`)
+        } else if (body.code === 1024) {
+          console.log(`server酱发送通知消息异常: ${body.errmsg}\n`)
         } else {
           console.log(`server酱发送通知消息异常\n${JSON.stringify(body)}`)
         }
