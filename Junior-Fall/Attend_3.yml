@@ -17,7 +17,7 @@ jobs:
         steps:
             - name: Checkout
               run: |
-                  git clone https://github.com/VidocqH/AutoAttendYuKeTang ~/AutoAttendYuKeTang
+                  git clone https://github.com/HibariX/AutoAttendYuKeTang ~/AutoAttendYuKeTang
             - uses: actions/checkout@v2
             - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v2
@@ -33,3 +33,4 @@ jobs:
               env:
                   USER_INFO: ${{ secrets.USER_INFO }}
                   PUSH_KEY: ${{ secrets.PUSH_KEY }}
+                  BARK_ID: ${{ secrets.BARK_ID }}

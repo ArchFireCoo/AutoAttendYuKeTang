@@ -1,8 +1,28 @@
 const got = require('got')
 
 const SCKEY = process.env.PUSH_KEY
+const BARKID = process.env.BARK_ID
 
 const sendNotify = (title, message) => {
+  console.log(`https://api.day.app/${BARKID}/${encodeURIComponent(title)}/${encodeURIComponent(message)}?group=${encodeURIComponent("长江雨课堂")}`);
+  if (BARKID) {
+
+    got(`https://api.day.app/${BARKID}/${encodeURIComponent(title)}/${encodeURIComponent(message)}?group=${encodeURIComponent("长江雨课堂")}`, {
+          responseType: 'json'  
+    }).then( ({ body }) => {
+      if (body.code === 200) {
+        console.log("Bark app 推送通知成功");
+      }else {
+        console.log(`Bark app 推送通知异常：${body.message}`);
+      }
+    }).catch( (err) => {
+      console.log("Bark app 发送通知调用API失败！！\n");
+      console.log(err);
+    })
+  } else {
+    console.log( "您未提供BARKID，无法使用BARK接收推送通知\n")
+  }
+
   if (SCKEY) {
     got(`https://sctapi.ftqq.com/${SCKEY}.send`, {
       searchParams: {
