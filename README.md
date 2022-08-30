@@ -8,7 +8,7 @@ cd AutoAttendYuKeTang
 git checkout python
 python3 -m venv env
 source env/bin/activate
-pip install -r requirements
+pip install -r requirements.txt
 python ./src/startup.py
 ```
 ## Method 2: Local (node)
